@@ -70,7 +70,7 @@
 2. Запустите команду:
 
 ```bash
-pyinstaller --onefile --noconsole --hidden-import plyer.platforms.win.notification <название файла.py>
+c <название файла.py>
 ```
 
 - `--onefile`: Указывает PyInstaller собрать все в один исполняемый файл.
