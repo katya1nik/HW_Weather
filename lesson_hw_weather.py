@@ -153,16 +153,21 @@ def format_weather_message(weather_dict:dict)-> str:
 # Описание погоды 
   description = weather_dict['weather'][0]['description']
 
-  return f'Температура: {temp}°C\nОщущается как: {feels_like}°C\nОписание: {description}'
+  return (f'Температура: {temp}°C\nОщущается как: {feels_like}°C\nОписание: {description}')
 
 
 # Уведомление
 def notify_weather(message: str) -> None:
  
   notification.notify(
-    message=message,
+    message = message,
     app_name='Погода',
-    app_icon=None,
+    app_icon = None,
     timeout=30,
-    toast = True
+    toast = True,
   )
+
+if __name__ == '__main__':
+    weather_dict = get_weather()
+    message: str = format_weather_message(weather_dict)
+    notify_weather(message)
