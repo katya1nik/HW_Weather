@@ -108,22 +108,35 @@ python
 
 import requests
 from plyer import notification
-# Просто сделаем запрос без функций
 
 CITY = 'Химки'
-APPI_KEY = '23496c2a58b99648af590ee8a29c5348'
+API_KEY = '23496c2a58b99648af590ee8a29c5348'
 UNITS = 'metric'
 LANGUAGE = 'ru'
 
 
-url = fr'https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={APPI_KEY}&units={UNITS}&lang={LANGUAGE}'
+def get_weather(city: str = CITY, api_key: str = API_KEY, units: str = UNITS, langusge: str = LANGUAGE)-> dict:
+  """
+  Функция, которая получает информацию о погоде  указанного города.
 
-response = requests.get(url) # Сделали запрос и получили объект ответа
-print(response.status_code) # Получили статус ответа
-print(response.json()) # Получили объект Python из JSON
+  Args:
+      city (str, optional): _description_. Defaults to CITY.
+      api_key (str, optional): _description_. Defaults to API_KEY.
+      units (str, optional): _description_. Defaults to UNITS.
+      langusge (str, optional): _description_. Defaults to LANGUAGE.
+
+  Returns:
+  Возвращает словарь с данными о погоде.
+  """    
+
+  url = fr'https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={API_KEY}&units={UNITS}&lang={LANGUAGE}'
+  response = requests.get(url) 
+  return response.json()
 
 
 # Получим описание и температуру, и ощущается как
+def format_weather_message(weather_dict:dict)-> str:
+    pass
 weather_dict = response.json()
 
 # Temp
@@ -136,6 +149,8 @@ description = weather_dict['weather'][0]['description']
 print(f'Температура: {temp}°C\nОщущается как: {feels_like}°C\nОписание: {description}')
 
 # Уведомление
+def notify_weather(message: str)->None:
+    pass
 notification.notify(
     title='Погода в Химках',
     message=f'Температура: {temp}°C\nОщущается как: {feels_like}°C\nОписание: {description}',
