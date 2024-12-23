@@ -147,20 +147,22 @@ def format_weather_message(weather_dict:dict)-> str:
   """
 
 # Temp
-temp = weather_dict['main']['temp']
+  temp = weather_dict['main']['temp']
 # Ощущается как
-feels_like = weather_dict['main']['feels_like']
-# Описание погоды
-description = weather_dict['weather'][0]['description']
+  feels_like = weather_dict['main']['feels_like']
+# Описание погоды 
+  description = weather_dict['weather'][0]['description']
 
-print(f'Температура: {temp}°C\nОщущается как: {feels_like}°C\nОписание: {description}')
+  return f'Температура: {temp}°C\nОщущается как: {feels_like}°C\nОписание: {description}'
+
 
 # Уведомление
-def notify_weather(message: str)->None:
-    pass
-notification.notify(
-    title='Погода в Химках',
-    message=f'Температура: {temp}°C\nОщущается как: {feels_like}°C\nОписание: {description}',
-    app_name='Weather',
-    app_icon=None)
-
+def notify_weather(message: str) -> None:
+ 
+  notification.notify(
+    message=message,
+    app_name='Погода',
+    app_icon=None,
+    timeout=30,
+    toast = True
+  )
