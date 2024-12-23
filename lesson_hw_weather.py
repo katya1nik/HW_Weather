@@ -120,10 +120,10 @@ def get_weather(city: str = CITY, api_key: str = API_KEY, units: str = UNITS, la
   Функция, которая получает информацию о погоде  указанного города.
 
   Args:
-      city (str, optional): _description_. Defaults to CITY.
-      api_key (str, optional): _description_. Defaults to API_KEY.
-      units (str, optional): _description_. Defaults to UNITS.
-      langusge (str, optional): _description_. Defaults to LANGUAGE.
+      city -- defaults to CITY - Название города для которого нужно получить данные о погоде.
+      api_key -- defaults to API_KEY - Ключ API для OpenWeatherMap.
+      units -- defaults to UNITS - Единицы измерения температуры.
+      langusge -- defaults to LANGUAGE - Язык, на котором будут возвращены данные.
 
   Returns:
   Возвращает словарь с данными о погоде.
@@ -136,8 +136,15 @@ def get_weather(city: str = CITY, api_key: str = API_KEY, units: str = UNITS, la
 
 # Получим описание и температуру, и ощущается как
 def format_weather_message(weather_dict:dict)-> str:
-    pass
-weather_dict = response.json()
+  """
+  Функция, которая форматирует сообщение о погоде (возвращает строку с информацией о погоде).
+
+  Args:
+      weather_dict (dict): Словарь с данными о погоде.
+
+  Returns:
+      str: _description - Строка с информацией о погоде.
+  """
 
 # Temp
 temp = weather_dict['main']['temp']
